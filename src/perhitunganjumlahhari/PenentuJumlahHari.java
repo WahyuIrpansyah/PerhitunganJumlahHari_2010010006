@@ -216,6 +216,9 @@ public class PenentuJumlahHari extends javax.swing.JFrame {
 
     private void hapusBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusBTNActionPerformed
         // TODO add your handling code here:
+        jumlahharilabel.setText("");
+        tahunTF.setText("");
+        bulanTF.setText("");
     }//GEN-LAST:event_hapusBTNActionPerformed
 
     private void simpanBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanBTNActionPerformed
