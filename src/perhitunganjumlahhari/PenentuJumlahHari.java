@@ -39,7 +39,7 @@ public class PenentuJumlahHari extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         tahunTF = new javax.swing.JTextField();
-        bulanTF = new javax.swing.JTextField();
+        bulanComboBox = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jumlahharilabel = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -59,6 +59,13 @@ public class PenentuJumlahHari extends javax.swing.JFrame {
 
         jLabel2.setText("Bulan");
 
+        bulanComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" }));
+        bulanComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bulanComboBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -70,8 +77,8 @@ public class PenentuJumlahHari extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(38, 38, 38)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bulanTF)
-                    .addComponent(tahunTF))
+                    .addComponent(tahunTF, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                    .addComponent(bulanComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -84,8 +91,8 @@ public class PenentuJumlahHari extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(bulanTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bulanComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 102));
@@ -212,6 +219,28 @@ public class PenentuJumlahHari extends javax.swing.JFrame {
 
     private void hitungBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitungBTNActionPerformed
         // TODO add your handling code here:
+        if(tahunTF.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error: isian tahun kosong!",
+                    "error: isian tahun kosong!", JOptionPane.WARNING_MESSAGE);
+        }else{
+        int tahun = Integer.parseInt(tahunTF.getText());
+        int jumlahHari;
+        if(bulanComboBox.getSelectedItem().equals("Februari")){
+            if( ((tahun%4==0)&&!(tahun%100==0)) || (tahun%400==0) )
+                jumlahHari = 29;
+           else jumlahHari = 28;
+        }else if(bulanComboBox.getSelectedItem().equals("April") ||
+                bulanComboBox.getSelectedItem().equals("Juni") ||
+                bulanComboBox.getSelectedItem().equals("September") ||
+                bulanComboBox.getSelectedItem().equals("November")){
+            jumlahHari=30;
+        }else{
+            jumlahHari=31;
+        }
+        jumlahharilabel.setText("jumlah hari pada bulan " +
+                bulanComboBox.getSelectedItem() +
+                "tahun" + tahun + "adalah" + jumlahHari);
+        }
     }//GEN-LAST:event_hitungBTNActionPerformed
 
     private void hapusBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusBTNActionPerformed
@@ -237,6 +266,10 @@ public class PenentuJumlahHari extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_KeluarBTNActionPerformed
+
+    private void bulanComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bulanComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bulanComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -275,7 +308,7 @@ public class PenentuJumlahHari extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton KeluarBTN;
-    private javax.swing.JTextField bulanTF;
+    private javax.swing.JComboBox<String> bulanComboBox;
     private javax.swing.JButton hapusBTN;
     private javax.swing.JButton hitungBTN;
     private javax.swing.JLabel jLabel1;
