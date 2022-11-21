@@ -223,7 +223,7 @@ public class PenentuJumlahHari extends javax.swing.JFrame {
         try{
             BufferedWriter out=new BufferedWriter(new FileWriter("julahhari.txt"));
             out.write(jumlahharilabel.getText());
-            JOptionPane.showMessageDialog(null, "Berhasil Disimpan Dalam File");
+            JOptionPane.showMessageDialog(null, "Berhasil DisimpanS Dalam File");
             out.close();
         }catch (HeadlessException | IOException e){
             System.err.println("Error: "+e.getMessage());
@@ -232,6 +232,7 @@ public class PenentuJumlahHari extends javax.swing.JFrame {
 
     private void KeluarBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KeluarBTNActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_KeluarBTNActionPerformed
 
     /**
